@@ -1,17 +1,95 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Empleados</title></head>
+<head>
+    <title>Lista de Empleados</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+
+        a.button:hover {
+            background-color: #45a049;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            text-align: left;
+        }
+
+        td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+
+        .action-link {
+            color: #e53935;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .action-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
 <body>
-<h2>Lista de Empleados</h2>
-<a th:href="@{/nuevo}">Nuevo Empleado</a>
-<table border="1">
-    <tr><th>ID</th><th>Nombre</th><th>Puesto</th><th>Acciones</th></tr>
-    <tr th:each="emp : ${empleados}">
-        <td th:text="${emp.id}"></td>
-        <td th:text="${emp.nombre}"></td>
-        <td th:text="${emp.puesto}"></td>
-        <td><a th:href="@{/eliminar/{id}(id=${emp.id})}">Eliminar</a></td>
-    </tr>
-</table>
+<div class="container">
+    <h2>Lista de Empleados</h2>
+    <a th:href="@{/nuevo}" class="button">Nuevo Empleado</a>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Nombre</th>
+            <th>Puesto</th>
+            <th>Acciones</th>
+        </tr>
+        <tr th:each="emp : ${empleados}">
+            <td th:text="${emp.id}"></td>
+            <td th:text="${emp.nombre}"></td>
+            <td th:text="${emp.puesto}"></td>
+            <td>
+                <a th:href="@{/eliminar/{id}(id=${emp.id})}" class="action-link">Eliminar</a>
+            </td>
+        </tr>
+    </table>
+</div>
 </body>
 </html>

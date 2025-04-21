@@ -1,13 +1,87 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
-<head><title>Nuevo Empleado</title></head>
+<head>
+    <title>Nuevo Empleado</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f4f6f8;
+            margin: 0;
+            padding: 40px;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
+
+        button {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        a.back-link {
+            display: inline-block;
+            margin-top: 20px;
+            text-decoration: none;
+            color: #4CAF50;
+            font-weight: bold;
+        }
+
+        a.back-link:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
 <body>
-<h2>Nuevo Empleado</h2>
-<form th:action="@{/guardar}" th:object="${empleado}" method="post">
-    Nombre: <input type="text" th:field="*{nombre}" required><br>
-    Puesto: <input type="text" th:field="*{puesto}" required><br>
-    <button type="submit">Guardar</button>
-</form>
-<a th:href="@{/}">Volver</a>
+<div class="container">
+    <h2>Nuevo Empleado</h2>
+    <form th:action="@{/guardar}" th:object="${empleado}" method="post">
+        <label for="nombre">Nombre</label>
+        <input type="text" th:field="*{nombre}" id="nombre" required>
+
+        <label for="puesto">Puesto</label>
+        <input type="text" th:field="*{puesto}" id="puesto" required>
+
+        <button type="submit">Guardar</button>
+    </form>
+    <a th:href="@{/}" class="back-link">← Volver</a>
+</div>
 </body>
 </html>
