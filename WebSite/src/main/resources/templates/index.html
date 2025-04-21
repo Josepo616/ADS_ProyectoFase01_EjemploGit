@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head><title>Empleados</title></head>
+<body>
+<h2>Lista de Empleados</h2>
+<a th:href="@{/nuevo}">Nuevo Empleado</a>
+<table border="1">
+    <tr><th>ID</th><th>Nombre</th><th>Puesto</th><th>Acciones</th></tr>
+    <tr th:each="emp : ${empleados}">
+        <td th:text="${emp.id}"></td>
+        <td th:text="${emp.nombre}"></td>
+        <td th:text="${emp.puesto}"></td>
+        <td><a th:href="@{/eliminar/{id}(id=${emp.id})}">Eliminar</a></td>
+    </tr>
+</table>
+</body>
+</html>
